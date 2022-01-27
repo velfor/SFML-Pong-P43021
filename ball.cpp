@@ -15,16 +15,24 @@ float Ball::getSpeedy() { return speedy; }
 void Ball::setSpeedx(float fspeedx) { speedx = fspeedx; }
 void Ball::setSpeedy(float fspeedy) { speedy = fspeedy; }
 sf::Vector2f Ball::getPosition() { return circle.getPosition(); }
+sf::FloatRect Ball::getHitBox() { return circle.getGlobalBounds(); }
+void Ball::reboundX() { speedx = -speedx; }
+void Ball::reboundY() { speedy = -speedy; }
+int Ball::getLeftScore() { return left_score; }
+int Ball::getRightScore() { return right_score; }
 void Ball::update() {
 	circle.move(speedx, speedy);
 	if (circle.getPosition().x <= 0) {
+		right_score++;
 		speedx = -speedx;
 	}
 	if (circle.getPosition().x >= WINDOW_WIDTH - 2*radius) {
+		left_score++;
 		speedx = -speedx;
 	}
 	if (circle.getPosition().y <= 0 ||
 		circle.getPosition().y >= WINDOW_HEIGHT - 2 * radius) {
 		speedy = -speedy;
 	}
+
 }

@@ -1,11 +1,12 @@
 #pragma once
+#include "const.h"
 #include "SFML/Graphics.hpp"
 
 class Bat {
 protected:
 	sf::RectangleShape rect;
-	float width = 25;
-	float height = 100;
+	float width = bat_width;
+	float height = bat_height;
 	float speedy = 10.f;
 public:
 	Bat(float startx, float starty);
@@ -15,4 +16,5 @@ public:
 	float getSpeedy();
 	sf::Vector2f getPosition();
 	void setPosition(float x, float y);
+	sf::FloatRect getHitBox();
 };

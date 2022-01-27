@@ -12,3 +12,4 @@ float Bat::getHeight() { return height; }
 float Bat::getSpeedy() { return speedy; }
 sf::Vector2f Bat::getPosition() { return rect.getPosition(); }
 void Bat::setPosition(float x, float y) { rect.setPosition(x, y); }
+sf::FloatRect Bat::getHitBox() { return rect.getGlobalBounds(); }
