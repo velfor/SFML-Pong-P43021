@@ -9,6 +9,10 @@ private:
 	float speedy = 3.f;
 	int left_score = 0;
 	int right_score = 0;
+	sf::Vector2f midtop;
+	sf::Vector2f midbottom;
+	sf::Vector2f midleft;
+	sf::Vector2f midright;
 public:
 	Ball();
 	sf::CircleShape getShape();
@@ -24,4 +28,9 @@ public:
 	void reboundY();
 	int getLeftScore();
 	int getRightScore();
+	sf::Vector2f getMidTop();
+	sf::Vector2f getMidBottom();
+	sf::Vector2f getMidLeft();
+	sf::Vector2f getMidRight();
+	void setPosition(float x, float y);
 };

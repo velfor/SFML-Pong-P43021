@@ -34,5 +34,23 @@ void Ball::update() {
 		circle.getPosition().y >= WINDOW_HEIGHT - 2 * radius) {
 		speedy = -speedy;
 	}
-
+}
+sf::Vector2f Ball::getMidTop() {
+	midtop = sf::Vector2f(getPosition().x + radius, getPosition().y);
+	return midtop;
+}
+sf::Vector2f Ball::getMidBottom(){
+	midbottom = sf::Vector2f(getPosition().x + radius , getPosition().y +2 * radius);
+	return midbottom;
+}
+sf::Vector2f Ball::getMidLeft(){
+	midleft = sf::Vector2f(getPosition().x, getPosition().y + radius);
+	return midleft;
+}
+sf::Vector2f Ball::getMidRight(){
+	midright = sf::Vector2f(getPosition().x + 2*radius, getPosition().y+radius);
+	return midright;
+}
+void Ball::setPosition(float x, float y) {
+	circle.setPosition(x, y);
 }

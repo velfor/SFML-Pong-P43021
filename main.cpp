@@ -51,14 +51,33 @@ int main(){
 			right_score.update(std::to_string(ball.getRightScore()));
 			//проверка столкновения мяча и левой ракетки
 			if (ball.getHitBox().intersects(left_bat.getHitBox())) {
-				//ball.setSpeedx(-ball.getSpeedx());
-				ball.reboundX();
+				//c правой границей ракетки
+				if (left_bat.getHitBox().contains(ball.getMidLeft())) {
+					//выталкиваем мяч из ракетки
+					ball.setPosition(left_bat.getPosition().x + left_bat.getWidth(),
+						ball.getPosition().y);
+					//меняем направление мяча
+					ball.reboundX();
+				}
+				//с верхней границей
+				if (left_bat.getHitBox().contains(ball.getMidBottom())) {
+					ball.setPosition(ball.getPosition().x,
+						left_bat.getPosition().y - 2*ball.getRadius());
+					ball.reboundY();
+				}
+				//c нижней границей
+				if (left_bat.getHitBox().contains(ball.getMidTop())) {
+					ball.setPosition(ball.getPosition().x, 
+						left_bat.getPosition().y + left_bat.getHeight());
+					ball.reboundY();
+				}
 			}
 			//проверка столкновения мяча и правой ракетки
 			if (ball.getHitBox().intersects(right_bat.getHitBox())) {
 				//ball.setSpeedx(-ball.getSpeedx());
 				ball.reboundX();
 			}
+
 			//отрисовка окна
 			//1 - очищение окна
 			window.clear(Color(50, 50, 50));
@@ -70,6 +89,9 @@ int main(){
 			window.draw(right_score.getText());
 			//3 - отображение
 			window.display();
+			break;
+		case GAME_OVER:
+
 			break;
 		default:
 			break;
